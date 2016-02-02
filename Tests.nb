@@ -1,0 +1,209 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7368,        200]
+NotebookOptionsPosition[      7119,        187]
+NotebookOutlinePosition[      7469,        202]
+CellTagsIndexPosition[      7426,        199]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Unit", " ", "Tests"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"report", "[", "pts_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"fit", "=", 
+          RowBox[{"LinearModelFit", "[", 
+           RowBox[{"pts", ",", "x", ",", "x"}], "]"}]}], ",", " ", 
+         RowBox[{"xmin", "=", 
+          RowBox[{"Min", "[", 
+           RowBox[{"First", "/@", "pts"}], "]"}]}], ",", 
+         RowBox[{"xmax", "=", 
+          RowBox[{"Max", "[", 
+           RowBox[{"First", "/@", "pts"}], "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Show", "[", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"ListPlot", "[", "pts", "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"Plot", "[", 
+             RowBox[{
+              RowBox[{"fit", "[", "x", "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}]}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"fit", "[", "1", "]"}], "-", 
+          RowBox[{"fit", "[", "0", "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"\"\<R^2 = \>\"", "<>", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"fit", "[", "\"\<RSquared\>\"", "]"}], "]"}]}]}], 
+        "\[IndentingNewLine]", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"TestLinearDependency", "[", 
+      RowBox[{"f_", ",", "lbound_", ",", "ubound_", ",", "nsteps_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"Monitor", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", 
+            RowBox[{"f", "[", "x", "]"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "lbound", ",", "ubound", ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"ubound", "-", "lbound"}], ")"}], "/", "nsteps"}]}], 
+           "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"ProgressIndicator", "[", 
+          RowBox[{"x", ",", 
+           RowBox[{"{", 
+            RowBox[{"lbound", ",", "ubound"}], "}"}]}], "]"}], "}"}]}], 
+       "\[IndentingNewLine]", "]"}], "//", "report"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"TestPowerDependency", "[", 
+      RowBox[{
+      "f_", ",", " ", "lbound_", ",", " ", "ubound_", ",", " ", "nsteps_"}], 
+      "]"}], ":=", 
+     RowBox[{
+      RowBox[{"Monitor", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Log", "[", "x", "]"}], ",", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"Abs", "[", 
+              RowBox[{"f", "[", "x", "]"}], "]"}], "]"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "lbound", ",", " ", "ubound", ",", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"ubound", " ", "-", " ", "lbound"}], ")"}], "/", 
+             "nsteps"}]}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"ProgressIndicator", "[", 
+          RowBox[{"x", ",", 
+           RowBox[{"{", 
+            RowBox[{"lbound", ",", "ubound"}], "}"}]}], "]"}], "}"}]}], 
+       "\[IndentingNewLine]", "]"}], "//", "report"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"TestLogarithmicDependency", "[", 
+      RowBox[{"f_", ",", "lbound_", ",", "ubound_", ",", "nsteps_"}], "]"}], ":=",
+      "\[IndentingNewLine]", 
+     RowBox[{"TestLinearDependency", "[", 
+      RowBox[{
+       RowBox[{"Log", "/@", 
+        RowBox[{"Abs", "/@", "f"}]}], ",", "lbound", ",", "ubound", ",", 
+       "nsteps"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"TestRuntime", "[", 
+      RowBox[{"f_", ",", "lbound_", ",", "ubound_", ",", "nsteps_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"pts", ",", "i", ",", "t"}], "}"}], ",", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"pts", "=", 
+          RowBox[{"Monitor", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Log", "[", "n", "]"}], "//", "N"}], ",", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Timing", "[", 
+                   RowBox[{"f", "[", "n", "]"}], "]"}], "//", "First"}], "//",
+                  "Log"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"n", ",", "lbound", ",", "ubound", ",", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"ubound", "-", "lbound"}], ")"}], "/", "nsteps"}]}],
+                "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"ProgressIndicator", "[", 
+              RowBox[{"n", ",", 
+               RowBox[{"{", 
+                RowBox[{"lbound", ",", "ubound"}], "}"}]}], "]"}], "}"}]}], 
+           "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", "pts", "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"report", "[", "pts", "]"}]}], "\[IndentingNewLine]", 
+        "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"TestCompare", "[", 
+      RowBox[{"f_", ",", "exact_", ",", " ", "a_"}], "]"}], ":=", 
+     RowBox[{"Block", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"t", "=", 
+         RowBox[{"f", "[", "a", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\"\<Predicted: \>\"", "<>", 
+          RowBox[{"ToString", "[", "t", "]"}]}], ",", 
+         RowBox[{"\"\<Exact: \>\"", "<>", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"exact", "[", "a", "]"}], "]"}]}], ",", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"t", "/", 
+           RowBox[{"exact", "[", "a", "]"}]}], "]"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.6630688570221615`*^9, 3.6630688639881735`*^9}, {
+  3.6633195996829004`*^9, 3.6633196136739407`*^9}}]
+},
+WindowSize->{1264, 428},
+WindowMargins->{{-1280, Automatic}, {40, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (December 10, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 6557, 165, 645, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
