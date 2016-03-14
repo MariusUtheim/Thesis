@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7478,        203]
-NotebookOptionsPosition[      7229,        190]
-NotebookOutlinePosition[      7579,        205]
-CellTagsIndexPosition[      7536,        202]
+NotebookDataLength[      7475,        201]
+NotebookOptionsPosition[      7226,        188]
+NotebookOutlinePosition[      7576,        203]
+CellTagsIndexPosition[      7533,        200]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -89,32 +89,29 @@ Cell[BoxData[
       RowBox[{
       "f_", ",", " ", "lbound_", ",", " ", "ubound_", ",", " ", "nsteps_"}], 
       "]"}], ":=", 
-     RowBox[{"(*", 
-      RowBox[{"Monitor", "[", "\[IndentingNewLine]"}], "*)"}], 
      RowBox[{
-      RowBox[{"Table", "[", 
+      RowBox[{"Monitor", "[", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"{", 
+        RowBox[{"Table", "[", 
          RowBox[{
-          RowBox[{"Log", "[", "x", "]"}], ",", " ", 
-          RowBox[{"Log", "[", 
-           RowBox[{"Abs", "[", 
-            RowBox[{"f", "[", "x", "]"}], "]"}], "]"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Log", "[", "x", "]"}], ",", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"Abs", "[", 
+              RowBox[{"f", "[", "x", "]"}], "]"}], "]"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", " ", "lbound", ",", " ", "ubound", ",", " ", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"ubound", " ", "-", " ", "lbound"}], ")"}], "/", 
+             "nsteps"}]}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
         RowBox[{"{", 
-         RowBox[{"x", ",", " ", "lbound", ",", " ", "ubound", ",", " ", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{"ubound", " ", "-", " ", "lbound"}], ")"}], "/", 
-           "nsteps"}]}], "}"}]}], "]"}], 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{",", "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{"ProgressIndicator", "[", 
-           RowBox[{"x", ",", 
-            RowBox[{"{", 
-             RowBox[{"lbound", ",", "ubound"}], "}"}]}], "]"}], "}"}]}], 
-        "\[IndentingNewLine]", "]"}], "*)"}], "//", "report"}]}], ";"}], 
+         RowBox[{"ProgressIndicator", "[", 
+          RowBox[{"x", ",", 
+           RowBox[{"{", 
+            RowBox[{"lbound", ",", "ubound"}], "}"}]}], "]"}], "}"}]}], 
+       "\[IndentingNewLine]", "]"}], "//", "report"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
@@ -186,7 +183,8 @@ Cell[BoxData[
    "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.6630688570221615`*^9, 3.6630688639881735`*^9}, {
   3.6633195996829004`*^9, 3.6633196136739407`*^9}, {3.66454375564972*^9, 
-  3.664543757405711*^9}, {3.6645460956630354`*^9, 3.664546141656189*^9}}]
+  3.664543757405711*^9}, {3.6645460956630354`*^9, 3.664546141656189*^9}, {
+  3.664695877264682*^9, 3.6646958838529468`*^9}}]
 },
 WindowSize->{1264, 428},
 WindowMargins->{{-1280, Automatic}, {40, Automatic}},
@@ -204,7 +202,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 6667, 168, 645, "Input"]
+Cell[558, 20, 6664, 166, 645, "Input"]
 }
 ]
 *)
