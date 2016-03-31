@@ -1,0 +1,267 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9499,        258]
+NotebookOptionsPosition[      9210,        244]
+NotebookOutlinePosition[      9560,        259]
+CellTagsIndexPosition[      9517,        256]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"plateCoefficients", "[", 
+         RowBox[{"a_", ",", "L_"}], "]"}], "[", "w_", "]"}], "[", "n_", "]"}],
+       "[", 
+      RowBox[{"\[Alpha]_", ",", "\[Beta]_"}], "]"}], "[", 
+     RowBox[{"i_", ",", "j_"}], "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"\[Alpha]", "\[Equal]", "\[Beta]"}], ",", "\[IndentingNewLine]",
+       "0", ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"-", "L"}], " ", "a", " ", 
+       RowBox[{"w", "/", 
+        RowBox[{"(", 
+         RowBox[{"n", " ", "Tau"}], ")"}]}], " ", 
+       RowBox[{
+        RowBox[{"BesselK", "[", 
+         RowBox[{"1", ",", 
+          RowBox[{"w", " ", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{
+             RowBox[{"a", "^", "2"}], "+", 
+             RowBox[{
+              RowBox[{"r", "^", "2"}], 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"i", "-", "j"}], ")"}], "^", "2"}]}]}], "]"}]}]}], 
+         "]"}], "/", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{
+          RowBox[{"a", "^", "2"}], "+", 
+          RowBox[{
+           RowBox[{"r", "^", "2"}], 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"i", "-", "j"}], ")"}], "^", "2"}]}]}], "]"}]}]}]}], " ",
+      "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"plateSource", "[", 
+         RowBox[{"a_", ",", "L_"}], "]"}], "[", "w_", "]"}], "[", "n_", "]"}],
+       "[", 
+      RowBox[{"\[Alpha]_", ",", "\[Beta]_"}], "]"}], "[", 
+     RowBox[{"i_", ",", "j_"}], "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"\[Alpha]", "\[Equal]", "\[Beta]"}], ",", "0", ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "da", ",", "K0", ",", "K1"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"x", "[", "k_", "]"}], ":=", 
+           RowBox[{
+            RowBox[{"L", "/", "n"}], 
+            RowBox[{"(", 
+             RowBox[{"k", "-", 
+              RowBox[{"1", "/", "2"}]}], ")"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"da", "[", "dx_", "]"}], ":=", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{
+             RowBox[{"a", "^", "2"}], "+", 
+             RowBox[{"dx", "^", "2"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"K0", "=", 
+           RowBox[{
+            RowBox[{"BesselK", "[", 
+             RowBox[{"0", ",", "#"}], "]"}], "&"}]}], ";", 
+          RowBox[{"K1", "=", 
+           RowBox[{
+            RowBox[{"BesselK", "[", 
+             RowBox[{"1", ",", "#"}], "]"}], "&"}]}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "1"}], "/", "Tau"}], " ", 
+            RowBox[{"K0", "[", 
+             RowBox[{"w", " ", 
+              RowBox[{"da", "[", 
+               RowBox[{
+                RowBox[{"x", "[", "i", "]"}], "-", 
+                RowBox[{"x", "[", "j", "]"}]}], "]"}]}], "]"}]}], " ", 
+           "\[IndentingNewLine]", "-", " ", 
+           RowBox[{"a", " ", "w", " ", 
+            RowBox[{"L", "/", 
+             RowBox[{"Tau", "^", "2"}]}], " ", 
+            RowBox[{"NIntegrate", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"K1", "[", 
+                 RowBox[{"w", " ", 
+                  RowBox[{"da", "[", 
+                   RowBox[{
+                    RowBox[{"x", "[", "i", "]"}], "-", 
+                    RowBox[{"L", " ", "t"}]}], "]"}]}], "]"}], "/", 
+                RowBox[{"da", "[", 
+                 RowBox[{
+                  RowBox[{"x", "[", "i", "]"}], "-", 
+                  RowBox[{"L", " ", "t"}]}], "]"}]}], "*", 
+               RowBox[{"K0", "[", 
+                RowBox[{"w", " ", 
+                 RowBox[{"Abs", "[", 
+                  RowBox[{
+                   RowBox[{"x", "[", "j", "]"}], "-", 
+                   RowBox[{"L", " ", "t"}]}], "]"}]}], "]"}]}], ",", " ", 
+              RowBox[{"{", 
+               RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}]}]}]}]}], 
+        "\[IndentingNewLine]", "]"}], "//", "Re"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"testVectorMatchesMatrix", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"c", ",", "s", ",", "P", ",", "p"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"c", "=", 
+       RowBox[{
+        RowBox[{"plateCoefficients", "[", 
+         RowBox[{"1", ",", "10"}], "]"}], "[", "1", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"s", "=", 
+       RowBox[{
+        RowBox[{"plateSource", "[", 
+         RowBox[{"1", ",", "10"}], "]"}], "[", "1", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"P", "=", 
+       RowBox[{"PressureMatrix", "[", 
+        RowBox[{"c", ",", "s", ",", "2", ",", "15"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"p", "=", 
+       RowBox[{"PressureVector", "[", 
+        RowBox[{"c", ",", "s", ",", "2", ",", "15"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AllTrue", "[", 
+       RowBox[{
+        RowBox[{"p", "\[Equal]", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"P", "[", 
+            RowBox[{"[", 
+             RowBox[{"15", ",", "k"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", "1", ",", "30"}], "}"}]}], "]"}]}], ",", 
+        "TrueQ"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"testPointMatchesVector", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"c", ",", "s", ",", "P", ",", "p"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"c", "=", 
+       RowBox[{
+        RowBox[{"plateCoefficients", "[", 
+         RowBox[{"1", ",", "10"}], "]"}], "[", "1", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"s", "=", 
+       RowBox[{
+        RowBox[{"plateSource", "[", 
+         RowBox[{"1", ",", "10"}], "]"}], "[", "1", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"P", "=", 
+       RowBox[{"PressureVector", "[", 
+        RowBox[{"c", ",", "s", ",", "2", ",", "20"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"p", "=", 
+       RowBox[{"PressurePoint", "[", 
+        RowBox[{"c", ",", "s", ",", "2", ",", "20"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"TrueQ", "[", 
+       RowBox[{"p", "\[Equal]", 
+        RowBox[{"P", "[", 
+         RowBox[{"[", "10", "]"}], "]"}]}], "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.6684182851509438`*^9, 3.668418368876586*^9}, {
+  3.6684184708221116`*^9, 3.668418519044583*^9}, {3.6684185690441637`*^9, 
+  3.668418590734494*^9}, {3.6684188263235044`*^9, 3.668418828402916*^9}, {
+  3.6684188852226505`*^9, 3.668418945363265*^9}, {3.6684250445405426`*^9, 
+  3.668425135595492*^9}, {3.6684253477544737`*^9, 3.6684253896748896`*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{{3.668257249942574*^9, 3.668257303005411*^9}, {
+   3.66832522411104*^9, 3.6683252301425085`*^9}, {3.6683252676174374`*^9, 
+   3.668325268424344*^9}, {3.668325322527026*^9, 3.6683254968932066`*^9}, {
+   3.6683255325889444`*^9, 3.6683256940068398`*^9}, {3.6683265260387073`*^9, 
+   3.66832652652387*^9}, 3.668326936136332*^9, {3.6683270338595176`*^9, 
+   3.668327039369934*^9}, {3.668327534526594*^9, 3.668327548568307*^9}, {
+   3.6683277139250813`*^9, 3.6683277836634736`*^9}, {3.668331062242587*^9, 
+   3.668331129713888*^9}, {3.6683314680970945`*^9, 3.668331502648017*^9}, {
+   3.6683318186299324`*^9, 3.668331818823122*^9}, {3.6683324808196583`*^9, 
+   3.6683324812426414`*^9}, {3.6683326697364807`*^9, 
+   3.6683328183035793`*^9}, {3.6683330017583103`*^9, 3.668333013559471*^9}, {
+   3.668333059231697*^9, 3.6683330724663773`*^9}, {3.6683332321445417`*^9, 
+   3.6683332671862144`*^9}, {3.6683419884635844`*^9, 3.668341992951295*^9}, {
+   3.66834216959103*^9, 3.668342217067112*^9}, {3.668345566256926*^9, 
+   3.66834557111551*^9}, {3.668424026387598*^9, 3.668424026898185*^9}, 
+   3.6684253457621937`*^9}]
+},
+WindowSize->{1264, 932},
+WindowMargins->{{-1256, Automatic}, {18, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (December 10, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 7472, 204, 652, "Input"],
+Cell[8033, 226, 1173, 16, 52, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
